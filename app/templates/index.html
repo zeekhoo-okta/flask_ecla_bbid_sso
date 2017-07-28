@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+	<!-- Okta Auth-js -->
+	<script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-auth-js/1.6.0/okta-auth-js.min.js" type="text/javascript"></script>
+
+    <style>
+	.intro-pg {
+		text-align: center;
+		color: #d2e0e0;
+	}
+	.bg-fill {
+		padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+		padding-bottom: 50px;
+	}
+	.intro-message {
+		background: url(https://c1.staticflickr.com/3/2879/9119750759_eed1e8dc7b_b.jpg) no-repeat center center;
+		background-size: cover;
+		position: relative;
+		padding-top: 20%;
+		padding-bottom: 20%;
+	}
+    </style>
+</head>
+<body>
+	<div id="bg-fill">
+		<div class="row">
+			<div class="intro-pg">
+				<div class="col-lg-12">
+					<div class="intro-message">
+						<h1>Demo - BBID SSO through Okta</h1>
+						<td>
+							<a class="btn btn-primary btn-cs" onclick="doSSO()">
+								Click here to login
+							</a>
+						</td>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+
+<script type="text/javascript">
+	var baseUrl = '{{config.oidc.oktaUrl}}';
+	var clientId = '{{config.oidc.clientId}}';
+	var redirectUri = '{{config.oidc.redirectUri}}';
+
+	var authClient = new OktaAuth({
+		url: baseUrl,
+		clientId: clientId,
+		redirectUri: redirectUri,
+	});
+	var doSSO = function() {
+		authClient.token.getWithRedirect({
+			responseType: ['code'],
+			scopes: ['openid', 'profile'],
+		});
+	};
+</script>
+
+</html>
