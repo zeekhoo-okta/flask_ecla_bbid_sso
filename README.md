@@ -26,7 +26,7 @@ The diagram below shows the basic flow:
 
 1.  `cd` to the directory you just checked out:
 
-        $ cd flask_ecla_bbid_sso
+        $ cd flask_okta_bbid_sso
 2.  Create an isolated Python environment named "venv" using [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/):
 
         $ virtualenv venv
@@ -63,7 +63,7 @@ the clientID and clientSecret values required in the run steps above.
 ## Okta Specifics and OpenID Connect Explanation
 The code borrows heavily from the back-end implementation of the
 [Okta samples-python-flask](https://github.com/okta/samples-python-flask)
-sample project. Primarily, the /authorization-code/callback endpoint,
+sample project. Primarily, the **/authorization-code/callback** endpoint,
 which handles the OAuth 2.0 authorization-code grant flow originated through Okta.
 For an in-depth overview of the process, visit the link and follow through the README
 
