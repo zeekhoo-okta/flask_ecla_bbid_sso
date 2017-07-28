@@ -48,10 +48,15 @@ The diagram below shows the basic flow:
 
         $ python run.py
 
-8.  Navigate to the start homepage **http://localhost:8000/** and click on the
+8.  Navigate to the start homepage **http://localhost:3000/** and click on the
     button to initiate SSO into BBID NetCommunity. If you're not logged into Okta
     yet, you will first be redirected to Okta's login page. Once logged in,
     you will be redirected to BBID
+
+## Okta Setup
+Follow [these steps](https://github.com/okta/samples-python-flask/blob/master/docs/assets/oidc-app-setup.md)
+to setup an OpenID Connect client in your Okta environment. There you'll find
+the clientID and clientSecret values required in the run steps above.
 
 
 # Appendix
