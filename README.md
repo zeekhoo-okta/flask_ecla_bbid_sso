@@ -20,6 +20,40 @@ The diagram below shows the basic flow:
  [Blackbaud SKY](https://apidocs.sky.blackbaud.com/docs/authorization/) has support
  for OAuth 2.0*
 
+# Running the sample project
+
+`git checkout` this repository, then:
+
+1.  `cd` to the directory you just checked out:
+
+        $ cd flask_ecla_bbid_sso
+2.  Create an isolated Python environment named "venv" using [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/):
+
+        $ virtualenv venv
+3.  Next, activate the newly created virtualenv:
+
+        $ source venv/bin/activate
+4.  Then, install the dependencies for the sample SCIM server using
+    Python's ["pip" package manager](https://en.wikipedia.org/wiki/Pip_%28package_manager%29):
+
+        $ pip install -r requirements.txt
+5.  Rename **.sample.config.json** to **.okta.config.json**
+
+        $ mv .sample.config.json .okta.config.json
+
+6.  Edit *.okta.config.json* and provide the values for **oktaUrl**, **clientId** and **clientSecret**,
+    and **sharedKey**
+    
+7.  Start the example service using this command:
+
+        $ python run.py
+
+8.  Navigate to the start homepage **http://localhost:8000/** and click on the
+    button to initiate SSO into BBID NetCommunity. If you're not logged into Okta
+    yet, you will first be redirected to Okta's login page. Once logged in,
+    you will be redirected to BBID
+
+
 # Appendix
 ## Okta Specifics and OpenID Connect Explanation
 The code borrows heavily from the back-end implementation of the

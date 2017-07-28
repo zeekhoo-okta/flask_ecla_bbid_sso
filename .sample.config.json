@@ -1,0 +1,13 @@
+{
+  "okta": {
+    "oidc": {
+      "oktaUrl": "https://<your-okta-org>.com",
+      "clientId": "<clientId of the OpenID Connect Application registered in Okta>",
+      "clientSecret": "<The clientSecret for the above client>",
+      "redirectUri": "http://localhost:8000/authorization-code/callback"
+    }
+  },
+  "bbid": {
+    "sharedKey": "<The BBID NetCommunity SSO sharedKey>"
+  }
+}
