@@ -8,6 +8,7 @@
     }
   },
   "bbid": {
-    "sharedKey": "<The BBID NetCommunity SSO sharedKey>"
+    "sharedKey": "<The BBID NetCommunity SSO sharedKey>",
+    "clockSkew": "-100"
   }
 }

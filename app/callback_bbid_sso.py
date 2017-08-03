@@ -192,23 +192,27 @@ def callback():
     if 'iat' in claims and claims['iat'] > acceptable_iat:
         return "invalid iat claim", 401
 
-    print('claims = {}'.format(claims))
+    username = claims['preferred_username']
 
     my_ip = urlopen('http://ip.42.pl/raw').read()
 
-    current_epoch = '{}'.format(int(time.time()))
-    username = claims['preferred_username']
     BBID_SHARED_KEY = bbid_config['sharedKey']
+    clock_skew = 0
+    if bbid_config['clockSkew']:
+        clock_skew = int(bbid_config['clockSkew'])
+    current_epoch = '{}'.format(int(time.time()) + clock_skew)
+
+
     hashString = BBID_SHARED_KEY + username + current_epoch
     print('hashString = {}'.format(hashString))
 
     m = hashlib.md5()
     m.update(hashString)
     mvalue = m.hexdigest()
-    print('m = {}'.format(mvalue))
 
     page = 'https://community.elca.org/page.aspx?pid=226'
-    url = '{}&u={}&t={}&m={}'.format(page, urllib.quote_plus(username), current_epoch, mvalue)
+    url = '{}&u={}&t={}&m={}'.format(page, username, current_epoch, mvalue)
+    print('url = {}'.format(url))
 
     return redirect(url)
 

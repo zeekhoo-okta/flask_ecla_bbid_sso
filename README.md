@@ -44,6 +44,8 @@ The diagram below shows the basic flow:
 6.  Edit *.okta.config.json* and provide the values for **oktaUrl**, **clientId** and **clientSecret**,
     and **sharedKey**
     
+    If your server clock is skewed you can enter a value for **clockSkew** e.g. -100
+    
 7.  Start the example service using this command:
 
         $ python run.py
